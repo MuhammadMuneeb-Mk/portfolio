@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Muneeb Khan — Index</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FCFCFA; --ink:#17181A; --muted:#83837C; --line:#E2E1DA;
+  --moss:#3F5D45; --moss-lt:#EBEFEA;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Manrope",system-ui,sans-serif; background:var(--paper); color:var(--ink);
+  font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+:focus-visible{outline:2px solid var(--moss);outline-offset:4px}
+.wrap{max-width:960px;margin:0 auto;padding:0 32px}
+
+/* type scale — four sizes only */
+h1{font-family:"Fraunces",Georgia,serif;font-weight:300;font-size:clamp(38px,6vw,68px);line-height:1.06;letter-spacing:-0.02em}
+h2{font-family:"Fraunces",Georgia,serif;font-weight:400;font-size:19px;line-height:1.3}
+.small{font-size:14px;color:var(--muted)}
+
+/* glass header */
+header{
+  position:fixed;inset:0 0 auto 0;z-index:50;
+  background:rgba(252,252,250,.72);backdrop-filter:blur(14px) saturate(1.4);
+  border-bottom:1px solid transparent;transition:border-color .3s;
+}
+header.stuck{border-bottom-color:var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:62px;gap:24px}
+.nav .me{font-family:"Fraunces",serif;font-size:17px;font-weight:400}
+.nav nav{display:flex;gap:26px}
+.nav nav a{font-size:14.5px;color:var(--muted);transition:color .2s}
+.nav nav a:hover{color:var(--ink)}
+
+/* opening statement */
+.open{padding:150px 0 90px}
+.open p{max-width:56ch;margin-top:26px;font-size:17.5px;color:#4A4B4D}
+.open .meta{display:flex;gap:28px;margin-top:34px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
+.open .meta b{color:var(--ink);font-weight:600}
+
+/* the index — the whole point of this layout */
+.idx-head{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:12px;border-bottom:1px solid var(--ink)}
+.idx-head .small{letter-spacing:.02em}
+.idx{margin-bottom:96px}
+.row{
+  display:grid;grid-template-columns:62px 1fr auto;gap:20px;align-items:baseline;
+  width:100%;text-align:left;padding:20px 0;border-bottom:1px solid var(--line);
+  transition:padding-left .25s ease,color .25s ease;
+}
+.row:hover{padding-left:14px}
+.row .yr{font-size:13.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.row .nm{font-family:"Fraunces",serif;font-size:clamp(20px,2.6vw,27px);font-weight:400;line-height:1.15}
+.row .kind{font-size:13.5px;color:var(--muted)}
+.row:hover .nm{color:var(--moss)}
+
+/* floating preview that follows the cursor */
+.float{
+  position:fixed;top:0;left:0;z-index:40;width:310px;pointer-events:none;
+  opacity:0;transition:opacity .22s ease;will-change:transform;
+}
+.float.on{opacity:1}
+.float .card{background:var(--moss-lt);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.float .band{height:150px;background:var(--moss);display:flex;align-items:flex-end;padding:14px}
+.float .band span{font-family:"Fraunces",serif;font-size:34px;color:rgba(255,255,255,.42);line-height:1}
+.float .txt{padding:14px 16px 16px}
+.float .txt p{font-size:14px;line-height:1.45;color:#41443F}
+.float .txt em{display:block;font-style:normal;font-size:12.5px;color:var(--moss);margin-top:9px}
+
+/* prose blocks */
+.block{padding-bottom:82px}
+.block h2{margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--ink)}
+.block p{max-width:62ch;margin-bottom:16px;color:#41443F}
+.years{display:grid;gap:2px}
+.years div{display:grid;grid-template-columns:110px 1fr;gap:18px;padding:14px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.years .w{font-size:13.5px;color:var(--muted)}
+.years b{font-weight:600}
+.years span{display:block;font-size:14.5px;color:#5C5E5B;margin-top:3px}
+.stack{font-size:15.5px;color:#41443F;max-width:64ch}
+.stack b{font-weight:600}
+
+/* contact — click to copy, unique to this layout */
+.copy{
+  display:inline-flex;align-items:center;gap:12px;font-family:"Fraunces",serif;
+  font-size:clamp(22px,3.4vw,34px);font-weight:400;border-bottom:1px solid var(--line);
+  padding-bottom:8px;transition:border-color .25s,color .25s;
+}
+.copy:hover{border-color:var(--moss);color:var(--moss)}
+.copy .tick{font-family:"Manrope",sans-serif;font-size:13px;color:var(--moss);opacity:0;transition:opacity .2s}
+.copy.done .tick{opacity:1}
+footer{padding:34px 0 44px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;font-size:13.5px;color:var(--muted)}
+footer a{border-bottom:1px solid var(--line)}
+
+@media(max-width:640px){
+  .open{padding:112px 0 64px}
+  .row{grid-template-columns:52px 1fr;gap:14px}
+  .row .kind{grid-column:2;font-size:13px}
+  .years div{grid-template-columns:1fr}
+}
+@media(hover:none){.float{display:none}}
+@media(prefers-reduced-motion:reduce){*{transition-duration:.01ms!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body id="top">
+
+<header id="hdr">
+  <div class="wrap nav">
+    <a class="me" href="#top">Muhammad Muneeb Khan</a>
+    <nav>
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#say">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="float" id="float" aria-hidden="true">
+  <div class="card">
+    <div class="band"><span id="fInit"></span></div>
+    <div class="txt"><p id="fTxt"></p><em id="fStack"></em></div>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <section class="open">
+    <h1>I build things for the web while I finish a software engineering degree.</h1>
+    <p>Final year at SZABIST in Karachi. Most of what I know came from shipping: course projects that had to actually run, and client websites that had to survive contact with real users.</p>
+    <div class="meta">
+      <span><b>Karachi</b>, Pakistan</span>
+      <span><b>3.73</b> CGPA</span>
+      <span>Open to graduate roles from <b>mid-2026</b></span>
+    </div>
+  </section>
+
+  <section class="idx" id="work">
+    <div class="idx-head">
+      <h2>Work</h2>
+      <span class="small">Seven projects, 2023 to now</span>
+    </div>
+    <div id="rows"></div>
+  </section>
+
+  <section class="block" id="about">
+    <h2>About</h2>
+    <p>I started the degree in 2023 and spent the first two years on fundamentals: C++, Java, Python, databases, software architecture. In mid-2025 I spent two months in the ERP department at Artistic Milliners working with Oracle Forms and Reports, which was my first look at software that a business genuinely depends on.</p>
+    <p>Since late 2025 I've been building WordPress sites for clients through WebAych. That work taught me things a classroom does not: how to read a brief, how to make a layout hold together on a phone, and how to fix something at eight in the evening because a client noticed it.</p>
+    <div class="years">
+      <div><span class="w">2023 — now</span><div><b>BS Software Engineering, SZABIST</b><span>Karachi. CGPA 3.73, final year.</span></div></div>
+      <div><span class="w">Jul — Aug 2025</span><div><b>Oracle Developer Intern, Artistic Milliners</b><span>ERP department, AM4. Oracle Forms and Reports.</span></div></div>
+      <div><span class="w">Late 2025 — now</span><div><b>Freelance web developer, WebAych</b><span>Client WordPress builds, custom Elementor templates, performance fixes.</span></div></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Tools</h2>
+    <p class="stack">
+      <b>Languages.</b> C++, Java, Python, JavaScript, SQL, PHP fundamentals.<br>
+      <b>Web.</b> HTML5, CSS3, React, Node.js, responsive layout.<br>
+      <b>Data.</b> MongoDB, MySQL, Oracle SQL, Oracle Forms and Reports.<br>
+      <b>WordPress.</b> Elementor, Theme Builder, custom templates, image optimisation, basic SEO.<br>
+      <b>Everything else.</b> Git, GitHub, VS Code, Figma.
+    </p>
+  </section>
+
+  <section class="block" id="say">
+    <h2>Contact</h2>
+    <p>The fastest way to reach me is email. Click to copy it.</p>
+    <button class="copy" id="copy">
+      muhammadmuneeb.mk+careers@gmail.com
+      <span class="tick">Copied</span>
+    </button>
+  </section>
+
+  <footer>
+    <span>© <span id="yr"></span> Muhammad Muneeb Khan</span>
+    <span><a href="https://github.com/MuhammadMuneeb-Mk">GitHub</a></span>
+  </footer>
+</main>
+
+<script>
+var WORK = [
+  { yr:'2026', name:'Game Chat', kind:'Node.js · real-time', init:'GC',
+    txt:'A real-time multiplayer chat app modelled on in-game chat systems, with live rooms and message history.',
+    stack:'Node.js, Socket.IO, Firebase', link:'https://github.com/MuhammadMuneeb-Mk/Game-Chat' },
+  { yr:'2026', name:'WAQFOREVER', kind:'WordPress · client', init:'WF',
+    txt:'Custom archive templates and dynamic post listings built with Elementor Theme Builder, plus bespoke UI sections.',
+    stack:'WordPress, Elementor, Theme Builder', link:'#' },
+  { yr:'2025', name:'SAH Global', kind:'WordPress · client', init:'SG',
+    txt:'A custom single-post template and dynamic post pages, built to hold up across desktop, tablet and mobile.',
+    stack:'WordPress, Elementor', link:'#' },
+  { yr:'2025', name:'Karachi Tax Bar Association', kind:'WordPress · client', init:'KT',
+    txt:'Page building and content updates for a professional association, iterated directly against client feedback.',
+    stack:'WordPress, Elementor', link:'#' },
+  { yr:'2025', name:'LeadAych CRM', kind:'Figma · interface design', init:'LA',
+    txt:'A responsive CRM interface designed for mobile and desktop, prototyped so the flows could be clicked through before any code.',
+    stack:'Figma, UI/UX, prototyping', link:'https://www.figma.com/proto/MRlCVZMOQGDqPNFPvqmwa9/CRM-Mobile-APP?node-id=180-433' },
+  { yr:'2024', name:'Property Management System', kind:'Java · desktop', init:'PM',
+    txt:'A desktop application for tracking properties, tenants and payments, with a spreadsheet-backed data layer.',
+    stack:'Java, Excel', link:'#' },
+  { yr:'2023', name:'Riddle Master', kind:'C++ · game', init:'RM',
+    txt:'A choice-based text adventure that branches on player answers. My first real program.',
+    stack:'C++', link:'#' }
+];
+
+var rows = document.getElementById('rows');
+var float_ = document.getElementById('float');
+var fInit = document.getElementById('fInit');
+var fTxt = document.getElementById('fTxt');
+var fStack = document.getElementById('fStack');
+
+WORK.forEach(function(w){
+  var a = document.createElement('a');
+  a.className = 'row';
+  a.href = w.link;
+  if(w.link.indexOf('http') === 0){ a.target = '_blank'; a.rel = 'noopener'; }
+  a.innerHTML = '<span class="yr">' + w.yr + '</span>' +
+                '<span class="nm">' + w.name + '</span>' +
+                '<span class="kind">' + w.kind + '</span>';
+  a.addEventListener('mouseenter', function(){
+    fInit.textContent = w.init;
+    fTxt.textContent = w.txt;
+    fStack.textContent = w.stack;
+    float_.classList.add('on');
+  });
+  a.addEventListener('mouseleave', function(){ float_.classList.remove('on'); });
+  rows.appendChild(a);
+});
+
+var tx = 0, ty = 0, cx = 0, cy = 0, raf = null;
+document.addEventListener('mousemove', function(e){
+  tx = Math.min(e.clientX + 26, window.innerWidth - 326);
+  ty = Math.max(16, Math.min(e.clientY - 130, window.innerHeight - 306));
+  if(!raf) raf = requestAnimationFrame(glide);
+});
+function glide(){
+  cx += (tx - cx) * 0.16;
+  cy += (ty - cy) * 0.16;
+  float_.style.transform = 'translate(' + cx + 'px,' + cy + 'px)';
+  raf = requestAnimationFrame(glide);
+}
+
+document.getElementById('copy').addEventListener('click', function(){
+  var btn = this;
+  navigator.clipboard.writeText('muhammadmuneeb.mk+careers@gmail.com').then(function(){
+    btn.classList.add('done');
+    setTimeout(function(){ btn.classList.remove('done'); }, 1800);
+  });
+});
+
+window.addEventListener('scroll', function(){
+  document.getElementById('hdr').classList.toggle('stuck', window.scrollY > 8);
+});
+document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+
+<!-- ===== mockup switcher (shared across all four pages) ===== -->
+<style>
+  .mx-btn{
+    position:fixed; right:18px; bottom:18px; z-index:9999;
+    width:52px; height:52px; border-radius:50%;
+    background:#16181C; border:1px solid rgba(255,255,255,.16);
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px;
+    cursor:pointer; box-shadow:0 10px 30px -8px rgba(0,0,0,.45);
+    transition:transform .18s ease, background .2s ease;
+    font-family:system-ui,-apple-system,sans-serif;
+  }
+  .mx-btn:hover{transform:scale(1.06)}
+  .mx-btn:focus-visible{outline:3px solid #FFE14D; outline-offset:3px}
+  .mx-btn i{display:block; width:19px; height:2px; background:#fff; border-radius:2px;
+            transition:transform .22s ease, opacity .18s ease}
+  .mx-btn[aria-expanded="true"] i:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .mx-btn[aria-expanded="true"] i:nth-child(2){opacity:0}
+  .mx-btn[aria-expanded="true"] i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+  .mx-panel{
+    position:fixed; right:18px; bottom:82px; z-index:9998;
+    width:min(310px, calc(100vw - 36px));
+    background:#16181C; color:#EDEDEF; border:1px solid rgba(255,255,255,.14);
+    border-radius:16px; padding:8px; overflow:hidden;
+    box-shadow:0 24px 60px -18px rgba(0,0,0,.6);
+    font-family:system-ui,-apple-system,sans-serif;
+    opacity:0; transform:translateY(10px) scale(.97); pointer-events:none;
+    transition:opacity .2s ease, transform .2s ease;
+  }
+  .mx-panel.mx-on{opacity:1; transform:none; pointer-events:auto}
+  .mx-panel h6{
+    font-size:11.5px; font-weight:600; letter-spacing:.08em; text-transform:uppercase;
+    color:#7C7F87; margin:0; padding:11px 12px 9px;
+  }
+  .mx-panel a{
+    display:flex; align-items:flex-start; gap:11px; text-decoration:none;
+    padding:10px 12px; border-radius:10px; color:#EDEDEF;
+    transition:background .16s ease;
+  }
+  .mx-panel a:hover{background:rgba(255,255,255,.07)}
+  .mx-panel a[data-here="true"]{background:rgba(255,255,255,.11)}
+  .mx-panel .mx-n{
+    flex:none; width:22px; height:22px; border-radius:6px; margin-top:1px;
+    background:rgba(255,255,255,.1); color:#B9BCC4;
+    font-size:12px; font-weight:600; display:flex; align-items:center; justify-content:center;
+  }
+  .mx-panel a[data-here="true"] .mx-n{background:#FFE14D; color:#16181C}
+  .mx-panel .mx-t{font-size:14.5px; font-weight:600; line-height:1.3}
+  .mx-panel .mx-d{font-size:12.5px; color:#8B8E96; line-height:1.4; margin-top:2px}
+  .mx-panel .mx-foot{
+    font-size:11.5px; color:#6E717A; padding:9px 12px 7px; margin-top:4px;
+    border-top:1px solid rgba(255,255,255,.09);
+  }
+  /* keep the theme-preview pills clear of the switcher on small screens */
+  @media(max-width:760px){
+    .switcher{left:16px; right:auto; transform:none; bottom:84px}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .mx-btn,.mx-btn i,.mx-panel{transition-duration:.01ms !important}
+  }
+</style>
+
+<nav class="mx-panel" id="mxPanel" aria-label="Choose a mockup">
+  <h6>Portfolio mockups</h6>
+  <div id="mxLinks"></div>
+  <div class="mx-foot">Press 1&ndash;4 to jump between them.</div>
+</nav>
+<button class="mx-btn" id="mxBtn" aria-expanded="false" aria-controls="mxPanel" aria-label="Switch mockup">
+  <i></i><i></i><i></i>
+</button>
+
+<script>
+(function(){
+  var MOCKUPS = [
+    { file:'mockup-1-index.html',          title:'Mockup 1 \u2014 Index',     desc:'Editorial list, preview follows your cursor' },
+    { file:'mockup-2-console.html',        title:'Mockup 2 \u2014 Console',   desc:'Bento grid with a \u2318K search palette' },
+    { file:'mockup-3-panorama.html',       title:'Mockup 3 \u2014 Panorama',  desc:'Horizontal case studies, black and yellow' },
+    { file:'muneeb-portfolio-themes.html', title:'Mockup 4 \u2014 Themes',    desc:'One layout, three switchable palettes' }
+  ];
+
+  var here = window.location.pathname.split('/').pop() || '';
+  var links = document.getElementById('mxLinks');
+  var panel = document.getElementById('mxPanel');
+  var btn = document.getElementById('mxBtn');
+
+  MOCKUPS.forEach(function(m, i){
+    var a = document.createElement('a');
+    a.href = m.file;
+    a.dataset.here = String(here === m.file);
+    a.innerHTML = '<span class="mx-n">' + (i + 1) + '</span>' +
+                  '<span><span class="mx-t">' + m.title + '</span>' +
+                  '<span class="mx-d">' + m.desc + '</span></span>';
+    links.appendChild(a);
+  });
+
+  function setOpen(on){
+    panel.classList.toggle('mx-on', on);
+    btn.setAttribute('aria-expanded', String(on));
+  }
+
+  btn.addEventListener('click', function(e){
+    e.stopPropagation();
+    setOpen(btn.getAttribute('aria-expanded') !== 'true');
+  });
+
+  document.addEventListener('click', function(e){
+    if(!panel.contains(e.target) && e.target !== btn) setOpen(false);
+  });
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){ setOpen(false); return; }
+
+    // number shortcuts, but never while typing or holding a modifier
+    var t = e.target || {};
+    var typing = t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable;
+    if(typing || e.metaKey || e.ctrlKey || e.altKey) return;
+
+    var n = parseInt(e.key, 10);
+    if(n >= 1 && n <= MOCKUPS.length){
+      var next = MOCKUPS[n - 1].file;
+      if(next !== here) window.location.href = next;
+    }
+  });
+})();
+</script>
+<!-- ===== end mockup switcher ===== -->
+</body>
+</html>
